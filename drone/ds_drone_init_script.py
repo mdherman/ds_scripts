@@ -5,7 +5,7 @@ username = getpass.getuser()
 
 try:
     # Reading system_setup file
-    system_setup = open("/home/" + username + "/drone_setup.txt")
+    system_setup = open("drone_setup.txt")
     for line in system_setup:
         if "use: " in line:
             space = line.find(" ", 0, len(line))

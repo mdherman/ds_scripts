@@ -1,11 +1,15 @@
 import getpass
 import os
 import time
+import sys
 username = getpass.getuser()
 
 try:
+    # Get current file path
+    file_path = sys.path[0]
+    
     # Reading system_setup file
-    system_setup = open("drone_setup.txt")
+    system_setup = open(file_path + "/drone_setup.txt")
     for line in system_setup:
         if "use: " in line:
             space = line.find(" ", 0, len(line))

@@ -1,19 +1,19 @@
 import time
 import os
+import os.path as path
 
 temp = 0
-time = 0
+time_s = 0
+print_time = 1
 
-templog = open("templog.txt", "a")
-timelog = open("timelog.txt", "a")
+if path.exists("templog.txt"):
+	os.system("rm templog.txt")
 
-try:
-	while True:
-		temp = os.system("/sys/class/thermal/thermal_zone0/temp")/1000
-		time = time+1
-		templog.write(temp)
-		timelog.write(time)
-		time.sleep(1)
-	pass
-except:
-	print("Error occured.")
+while True:
+	os_temp = open("/sys/class/thermal/thermal_zone0/temp", "r")
+	templog = open("templog.txt", "a")
+	temp = int(int(os_temp.read())/1000)
+	templog.write(str(temp) + " " + str(time_s) + "\n")
+	time_s = time_s+print_time
+	time.sleep(print_time)
+

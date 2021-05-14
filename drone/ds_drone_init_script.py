@@ -32,6 +32,8 @@ try:
 
     # Starting ROS2 node and micrortps_agent if drone and use is in range
     if (string != "none"):
+        os.system("source /opt/ros/foxy/setup.bash")
+        os.system("source /home/ubuntu/dronesverm_ws/install/local_setup.bash")
         os.system("micrortps_agent start -t UART -b 921600 -d /dev/ttyS0 -n '" + string + "' &")
         time.sleep(10)
         os.system("ros2 run ds_ros2_drone_pkg px4_offboard_control --ros-args -r __ns:=/" + string)

@@ -17,13 +17,15 @@ then
 fi
 
 # Create ws directiory.
-mkdir -p ~/px4_ros_com_ros2/src
+mkdir -p ~/dronesverm_ws/src
 
 # Clone PX4 repos.
 git clone https://github.com/PX4/px4_ros_com.git ~/px4_ros_com_ros2/src/px4_ros_com
 git clone https://github.com/PX4/px4_msgs.git ~/px4_ros_com_ros2/src/px4_msgs
+git clone https://github.com/mdherman/ds_ros2_drone_pkg.git
+git clone https://github.com/martinmaeland/ds_ros2_msgs
 
-cd ~/px4_ros_com_ros2
+cd ~/dronesverm_ws
 
 # Install some neat dependencies
 sudo apt update && sudo apt install -y \

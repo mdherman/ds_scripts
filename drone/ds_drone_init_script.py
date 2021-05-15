@@ -36,7 +36,7 @@ try:
         os.system("source /home/ubuntu/dronesverm_ws/install/local_setup.bash")
         os.system("micrortps_agent start -t UART -b 921600 -d /dev/ttyS0 -n '" + string + "' &")
         time.sleep(10)
-        os.system("ros2 run ds_ros2_drone_pkg px4_offboard_control --ros-args -r __ns:=/" + string)
+        os.system("ros2 run ds_ros2_drone_pkg drone_offboard_control --ros-args -r __ns:=/" + string)
     else:
         print("Something went wrong...")
         print("Have you remebered to select drone- and use nr in ~/drone_setup.txt?")

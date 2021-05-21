@@ -7,7 +7,7 @@ username = getpass.getuser()
 try:
     # Get current file path
     file_path = sys.path[0]
-    
+
     # Reading system_setup file
     system_setup = open(file_path + "/drone_setup.txt")
     for line in system_setup:
@@ -32,8 +32,6 @@ try:
 
     # Starting ROS2 node and micrortps_agent if drone and use is in range
     if (string != "none"):
-        os.system("source /opt/ros/foxy/setup.bash")
-        os.system("source /home/ubuntu/dronesverm_ws/install/local_setup.bash")
         os.system("micrortps_agent start -t UART -b 921600 -d /dev/ttyS0 -n '" + string + "' &")
         time.sleep(10)
         os.system("ros2 run ds_ros2_drone_pkg drone_offboard_control --ros-args -r __ns:=/" + string)

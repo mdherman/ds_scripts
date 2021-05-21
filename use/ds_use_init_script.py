@@ -13,6 +13,10 @@ try:
             use_number = int(line[space:])
             use_namespace = str(use_number)
 
+    # Source ros 2
+    os.system("source /opt/ros/foxy/setup.bash")
+    os.system("source /home/ubuntu/dronesverm_ws/install/local_setup.bash")
+
     if (use_number > 10):
         os.system("ros2 run ds_ros2_use use_transfer --ros-args -r __ns:=/use_" + use_namespace)
     elif (use_number in range(1,10)):
